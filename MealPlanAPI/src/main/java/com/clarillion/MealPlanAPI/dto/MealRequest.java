@@ -1,10 +1,12 @@
-package com.clarillion.MealPlanAPI.util;
+package com.clarillion.MealPlanAPI.dto;
 
-import com.clarillion.MealPlanAPI.Entity.Ingredient;
-import com.clarillion.MealPlanAPI.Entity.Recipe;
+import com.clarillion.MealPlanAPI.entity.Ingredient;
+import com.clarillion.MealPlanAPI.entity.Recipe;
+import com.clarillion.MealPlanAPI.entity.RecipeIngredient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MealRequest {
     private int nrPeople;
@@ -25,10 +27,12 @@ public class MealRequest {
 
     public boolean checkRecipe(Recipe r){
         for (Ingredient i: includeIngr){
-            if (!r.getIngredients().containsKey(i)) return false;
+            if (!r.getIngredients().stream().map(RecipeIngredient::getIngredient)
+                    .collect(Collectors.toSet()).contains(i)) return false;
         }
         for (Ingredient i: excludeIngr){
-            if (r.getIngredients().containsKey(i)) return false;
+            if (r.getIngredients().stream().map(RecipeIngredient::getIngredient)
+                    .collect(Collectors.toSet()).contains(i)) return false;
         }
         for (String tag: includeTags){
             if (!r.getTags().contains(tag)) return false;
