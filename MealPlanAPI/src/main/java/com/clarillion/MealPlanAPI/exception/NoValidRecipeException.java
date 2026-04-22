@@ -1,4 +1,4 @@
-package com.clarillion.MealPlanAPI.Exceptions;
+package com.clarillion.MealPlanAPI.exception;
 
 public class NoValidRecipeException extends RuntimeException {
 }
