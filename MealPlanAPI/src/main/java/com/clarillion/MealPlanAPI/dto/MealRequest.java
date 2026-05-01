@@ -25,23 +25,23 @@ public class MealRequest {
         return nrPeople;
     }
 
-    public boolean checkRecipe(Recipe r){
-        for (Ingredient i: includeIngr){
-            if (!r.getIngredients().stream().map(RecipeIngredient::getIngredient)
-                    .collect(Collectors.toSet()).contains(i)) return false;
-        }
-        for (Ingredient i: excludeIngr){
-            if (r.getIngredients().stream().map(RecipeIngredient::getIngredient)
-                    .collect(Collectors.toSet()).contains(i)) return false;
-        }
-        for (String tag: includeTags){
-            if (!r.getTags().contains(tag)) return false;
-        }
-        for (String tag: excludeTags){
-            if (r.getTags().contains(tag)) return false;
-        }
-        return true;
-    }
+//    public boolean checkRecipe(Recipe r){
+//        for (Ingredient i: includeIngr){
+//            if (!r.getIngredients().stream().map(RecipeIngredient::getIngredient)
+//                    .collect(Collectors.toSet()).contains(i)) return false;
+//        }
+//        for (Ingredient i: excludeIngr){
+//            if (r.getIngredients().stream().map(RecipeIngredient::getIngredient)
+//                    .collect(Collectors.toSet()).contains(i)) return false;
+//        }
+//        for (String tag: includeTags){
+//            if (!r.getTags().contains(tag)) return false;
+//        }
+//        for (String tag: excludeTags){
+//            if (r.getTags().contains(tag)) return false;
+//        }
+//        return true;
+//    }
 
     public MealRequest(int nrPeople, List<Ingredient> includeIngr, List<Ingredient> exclude) {
         this.nrPeople = nrPeople;

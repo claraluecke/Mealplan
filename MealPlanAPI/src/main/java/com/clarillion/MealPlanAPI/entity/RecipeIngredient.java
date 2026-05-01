@@ -1,5 +1,6 @@
 package com.clarillion.MealPlanAPI.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 
@@ -8,15 +9,19 @@ public class RecipeIngredient {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private int id;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     private Recipe recipe;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Ingredient ingredient;
 
-    public Long getId() {
+    @Column
+    private Double amount;
+
+    public int getId() {
         return id;
     }
 
@@ -28,8 +33,8 @@ public class RecipeIngredient {
         this.recipe = recipe;
     }
 
-    public void setIngredient(Ingredient ingredient) {
-        this.ingredient = ingredient;
+    public void setIngredient(Ingredient i) {
+        this.ingredient = i;
     }
 
     public Double getAmount() {
@@ -40,9 +45,9 @@ public class RecipeIngredient {
         this.amount = amount;
     }
 
-    private Double amount;
 
-    public Object getIngredient() {
+
+    public Ingredient getIngredient() {
         return ingredient;
     }
 }
