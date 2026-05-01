@@ -29,7 +29,7 @@ public class Meal {
         this.recipe = recipe;
         this.nrPeople = nrPeople;
 
-        double quotient = (double)nrPeople/recipe.getNrPeople();
+        double quotient = (double)nrPeople/recipe.getServings();
         ingrList= recipe.getIngredients();
         for (RecipeIngredient ingr : ingrList)
             ingr.setAmount(ingr.getAmount()*quotient);

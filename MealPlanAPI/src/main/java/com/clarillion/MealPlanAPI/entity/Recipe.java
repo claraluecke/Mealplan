@@ -1,5 +1,6 @@
 package com.clarillion.MealPlanAPI.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -12,31 +13,69 @@ import java.util.Map;
 public class Recipe {
     @Id
     @Column
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToMany( mappedBy = "recipe", cascade = CascadeType.ALL)
-    private List<RecipeIngredient> ingredients;
     @Column
-    private String text;
-    @Column
-    private int nrPeople;
-    @Column
-    private List<String> tags;
+    private String name;
 
-    public List<String> getTags() {
-        return List.copyOf(tags);
+    @JsonManagedReference
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL)
+    private List<RecipeIngredient> ingredients;
+    @Lob
+    @Column
+    private String instructions;
+    @Column
+    private int servings;
+
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public List<RecipeIngredient> getIngredients() {
-        return new ArrayList<>(ingredients);
+        return ingredients;
     }
 
-    public String getText() {
-        return text;
+    public void setIngredients(List<RecipeIngredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
-    public int getNrPeople() {
-        return nrPeople;
+    public String getInstructions() {
+        return instructions;
     }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public int getServings() {
+        return servings;
+    }
+
+    public void setServings(int servings) {
+        this.servings = servings;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    @ElementCollection
+    private List<String> tags;
 }
+

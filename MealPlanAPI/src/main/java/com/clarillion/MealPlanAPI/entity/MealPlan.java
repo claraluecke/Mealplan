@@ -25,14 +25,14 @@ public class MealPlan {
     Set<Recipe> mpCookBook;
     List<Recipe> recipeList;
 
-    MealPlan(List<MealRequest> mealInfo, Set<Recipe>... cookbooks){
-        mpCookBook = new HashSet<Recipe>();
-        for (Set<Recipe> cb : cookbooks) mpCookBook.addAll(cb);
-        for (MealRequest mr : mealInfo){
-            Meal currmeal = findRecipe(mr);
-            MealList.add(currmeal);
-        }
-    }
+//    MealPlan(List<MealRequest> mealInfo, Set<Recipe>... cookbooks){
+//        mpCookBook = new HashSet<Recipe>();
+//        for (Set<Recipe> cb : cookbooks) mpCookBook.addAll(cb);
+//        for (MealRequest mr : mealInfo){
+//            Meal currmeal = findRecipe(mr);
+//            MealList.add(currmeal);
+//        }
+//    }
 
 
 //    public Meal replaceMeal(Meal m, MealRequest mr){
@@ -60,18 +60,18 @@ public class MealPlan {
 //        }
 //    }
 
-    private Meal findRecipe(MealRequest mealInfo) {
-        // todo : randomize
-        for (Recipe r : mpCookBook){
-            if (mealInfo.checkRecipe(r) && !recipeList.contains(r)) {
-                recipeList.add(r);
-                Meal m = new Meal(r, mealInfo.getNrPeople());
-                //addToIngrList(m);
-                return m;
-            }
-        }
-        throw new NoValidRecipeException();
-    }
+//    private Meal findRecipe(MealRequest mealInfo) {
+//        // todo : randomize
+//        for (Recipe r : mpCookBook){
+//            if (mealInfo.checkRecipe(r) && !recipeList.contains(r)) {
+//                recipeList.add(r);
+//                Meal m = new Meal(r, mealInfo.getNrPeople());
+//                //addToIngrList(m);
+//                return m;
+//            }
+//        }
+//        throw new NoValidRecipeException();
+//    }
 
 
 }
