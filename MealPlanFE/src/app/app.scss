@@ -1,0 +1,6 @@
+.list-container {
+  max-height: 300px;   /* controls visible area */
+  overflow-y: auto;    /* enables vertical scrolling */
+  border: 1px solid #ddd; /* optional, helps visually */
+  border-radius: 8px;
+}

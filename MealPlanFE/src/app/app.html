@@ -1,0 +1,14 @@
+<mat-card>
+  <div class="list-container">
+
+  <mat-list>
+       @for (ingr of allIngr(); track ingr.id){
+      <li> <app-ingredient [ingredient]="ingr"/> </li>
+  }
+  </mat-list>
+  </div>
+  <app-ingredient-submission/>
+</mat-card>
+
+<app-recipe-submission/>
+<app-recipe-list/>
