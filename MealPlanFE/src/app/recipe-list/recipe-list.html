@@ -1,0 +1,17 @@
+<mat-card>
+  <div class="list-container">
+
+  <mat-list>
+       @for (rec of allRecipes(); track rec.id){
+        <li (click)="selectRecipe(rec)" style="cursor: pointer;">
+          {{ rec.name }}
+        </li>
+  }
+  </mat-list>
+  </div>
+  
+</mat-card>
+
+@if(selectedRecipe){
+<app-recipe [recipe]="selectedRecipe"></app-recipe>
+}

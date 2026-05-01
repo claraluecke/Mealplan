@@ -1,0 +1,13 @@
+<h2 mat-dialog-title> Mögliches Duplikat</h2>
+<mat-dialog-content>
+    Bist du dir sicher dass du keins der folgenden meintest:
+    @for (ingr of data.duplicates; track ingr.id){
+        <li> {{ingr.name}} </li>
+    }
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button (click)= "cancel()"> Abbrechen</button>
+    <button mat-raisedbutton color = "primary" (click) = "confirm()"> Hinzufügen</button> 
+</mat-dialog-actions>

@@ -1,0 +1,9 @@
+<header>
+    {{recipe.name}}
+</header>
+<ul>
+    @for(ri of recipe.ingredients; track ri.id){
+    <li> {{buildString(ri)}} </li>
+}
+</ul>
+<div> {{recipe.instructions}}</div>
